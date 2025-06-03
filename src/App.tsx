@@ -49,7 +49,7 @@ function App() {
         {loading && <span className="loading">Kontrollerar...</span>}
       </form>
       {result && (
-        <p className="result">
+        <p className={`result ${result}`}>
           {result === 'owned'
             ? 'Fordonet ägs av Polismyndigheten.'
             : 'Fordonet ägs inte av Polismyndigheten.'}
