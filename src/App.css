@@ -1,42 +1,61 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #ffffff;
+  color: #00335a;
   text-align: center;
+  padding: 2rem;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.plate-form {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+  align-items: center;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.plate-wrapper {
+  display: flex;
+  border: 2px solid #000;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.se-tag {
+  background: #002f6c;
+  color: #fff;
+  font-weight: bold;
+  padding: 0 0.5rem;
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
 }
 
-.card {
-  padding: 2em;
+.plate-input {
+  border: none;
+  font-size: 2.5rem;
+  font-weight: bold;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+  padding: 0.2rem 0.5rem;
+  width: 9rem;
 }
 
-.read-the-docs {
-  color: #888;
+.plate-input:focus {
+  outline: none;
+}
+
+.result {
+  margin-top: 1.5rem;
+  font-size: 1.2rem;
+}
+
+.loading {
+  color: #00335a;
+  font-weight: bold;
 }
