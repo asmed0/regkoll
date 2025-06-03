@@ -1,4 +1,11 @@
 .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #ffffff;
+  color: #00335a;
   text-align: center;
   padding: 2rem;
 }
@@ -16,6 +23,7 @@
   border: 2px solid #000;
   border-radius: 4px;
   background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .se-tag {
@@ -25,16 +33,17 @@
   padding: 0 0.5rem;
   display: flex;
   align-items: center;
+  font-size: 1.5rem;
 }
 
 .plate-input {
   border: none;
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: bold;
   letter-spacing: 0.2rem;
   text-transform: uppercase;
   padding: 0.2rem 0.5rem;
-  width: 8rem;
+  width: 9rem;
 }
 
 .plate-input:focus {
@@ -44,4 +53,9 @@
 .result {
   margin-top: 1.5rem;
   font-size: 1.2rem;
+}
+
+.loading {
+  color: #00335a;
+  font-weight: bold;
 }

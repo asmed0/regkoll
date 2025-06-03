@@ -6,12 +6,11 @@ function App() {
   const [result, setResult] = useState<'owned' | 'not-owned' | null>(null)
   const [loading, setLoading] = useState(false)
 
-  const checkPlate = async (e: React.FormEvent) => {
-    e.preventDefault()
+  const checkPlate = async (value: string) => {
     setLoading(true)
     setResult(null)
     try {
-      const res = await fetch(`/api/check?plate=${plate}`)
+      const res = await fetch(`/api/check?plate=${value}`)
       if (!res.ok) throw new Error('Request failed')
       const data = await res.json()
       setResult(data.owned ? 'owned' : 'not-owned')
@@ -23,23 +22,31 @@ function App() {
     }
   }
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.toUpperCase()
+    setPlate(value)
+    if (value.length === 6) {
+      checkPlate(value)
+    } else {
+      setResult(null)
+    }
+  }
+
   return (
     <div className="container">
       <h1>RegKoll</h1>
-      <form onSubmit={checkPlate} className="plate-form">
+      <form className="plate-form" onSubmit={(e) => e.preventDefault()}>
         <div className="plate-wrapper">
           <span className="se-tag">S</span>
           <input
             className="plate-input"
             value={plate}
-            onChange={(e) => setPlate(e.target.value.toUpperCase())}
+            onChange={handleChange}
             maxLength={6}
             placeholder="ABC123"
           />
         </div>
-        <button type="submit" disabled={loading}>
-          {loading ? 'Kontrollerar...' : 'Sök'}
-        </button>
+        {loading && <span className="loading">Kontrollerar...</span>}
       </form>
       {result && (
         <p className="result">
