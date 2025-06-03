@@ -33,9 +33,14 @@ function App() {
   }
 
   return (
-    <div className="container">
-      <h1>RegKoll</h1>
-      <form className="plate-form" onSubmit={(e) => e.preventDefault()}>
+    <div className="page">
+      <div className="ad ad-top" />
+      <div className="content-sides">
+        <div className="ad ad-left" />
+        <div className="container">
+          <h1 className="title">REGKOLL</h1>
+          <p className="subtext">Kolla upp registreringsnummer snabbt och smidigt</p>
+        <form className="plate-form" onSubmit={(e) => e.preventDefault()}>
         <div className="plate-wrapper">
           <span className="se-tag">S</span>
           <input
@@ -48,13 +53,17 @@ function App() {
         </div>
         {loading && <span className="loading">Kontrollerar...</span>}
       </form>
-      {result && (
-        <p className="result">
-          {result === 'owned'
-            ? 'Fordonet ägs av Polismyndigheten.'
-            : 'Fordonet ägs inte av Polismyndigheten.'}
-        </p>
-      )}
+        {result && (
+          <p className={`result ${result}`}>
+            {result === 'owned'
+              ? 'Fordonet ägs av Polismyndigheten.'
+              : 'Fordonet ägs inte av Polismyndigheten.'}
+          </p>
+        )}
+        </div>
+        <div className="ad ad-right" />
+      </div>
+      <div className="ad ad-bottom" />
     </div>
   )
 }
