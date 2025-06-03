@@ -33,8 +33,11 @@ function App() {
   }
 
   return (
-    <div className="container">
-      <h1>RegKoll</h1>
+    <div className="page">
+      <div className="ad ad-top" />
+      <div className="container">
+        <h1 className="title">REGKOLL</h1>
+        <p className="subtext">Kolla upp registreringsnummer snabbt och smidigt</p>
       <form className="plate-form" onSubmit={(e) => e.preventDefault()}>
         <div className="plate-wrapper">
           <span className="se-tag">S</span>
@@ -55,6 +58,8 @@ function App() {
             : 'Fordonet ägs inte av Polismyndigheten.'}
         </p>
       )}
+      </div>
+      <div className="ad ad-bottom" />
     </div>
   )
 }
