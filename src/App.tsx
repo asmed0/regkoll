@@ -1,68 +1,62 @@
-import { useState } from "react";
-import "./App.css";
+import { useState } from 'react'
+import './App.css'
 
 function App() {
-  const [plate, setPlate] = useState("");
-  const [result, setResult] = useState<"owned" | "not-owned" | null>(null);
-  const [loading, setLoading] = useState(false);
+  const [plate, setPlate] = useState('')
+  const [result, setResult] = useState<'owned' | 'not-owned' | null>(null)
+  const [loading, setLoading] = useState(false)
 
   const checkPlate = async (value: string) => {
-    setLoading(true);
-    setResult(null);
+    setLoading(true)
+    setResult(null)
     try {
-      const res = await fetch(`/api/check?plate=${value}`);
-      if (!res.ok) throw new Error("Request failed");
-      const data = await res.json();
-      setResult(data.owned ? "owned" : "not-owned");
+      const res = await fetch(`/api/check?plate=${value}`)
+      if (!res.ok) throw new Error('Request failed')
+      const data = await res.json()
+      setResult(data.owned ? 'owned' : 'not-owned')
     } catch (err) {
-      console.error(err);
-      setResult("not-owned");
+      console.error(err)
+      setResult('not-owned')
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  };
+  }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value.toUpperCase();
-    setPlate(value);
+    const value = e.target.value.toUpperCase()
+    setPlate(value)
     if (value.length === 6) {
-      checkPlate(value);
+      checkPlate(value)
     } else {
-      setResult(null);
+      setResult(null)
     }
-  };
+  }
 
   return (
     <div className="container">
       <h1>RegKoll</h1>
       <form className="plate-form" onSubmit={(e) => e.preventDefault()}>
-        <div className="plate-outer">
-          <div className="eu-strip">
-            <span className="eu-stars">⭐️</span>
-            <span className="eu-country">S</span>
-          </div>
+        <div className="plate-wrapper">
+          <span className="se-tag">S</span>
           <input
             className="plate-input"
             value={plate}
             onChange={handleChange}
             maxLength={6}
             placeholder="ABC123"
-            autoCapitalize="characters"
-            autoCorrect="off"
-            spellCheck={false}
           />
         </div>
         {loading && <span className="loading">Kontrollerar...</span>}
       </form>
       {result && (
         <p className="result">
-          {result === "owned"
-            ? "Fordonet ägs av Polismyndigheten."
-            : "Fordonet ägs inte av Polismyndigheten."}
+          {result === 'owned'
+            ? 'Fordonet ägs av Polismyndigheten.'
+            : 'Fordonet ägs inte av Polismyndigheten.'}
         </p>
       )}
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
