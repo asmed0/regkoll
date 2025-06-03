@@ -1,209 +1,107 @@
-/* Import a modern font if needed, e.g., from Google Fonts in index.html */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap");
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: "Inter", sans-serif;
-  background: linear-gradient(135deg, #f5f7fa 0%, #e0e9f5 100%);
-  color: #333;
-  line-height: 1.6;
-}
-
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  padding: 2rem 1rem;
-  max-width: 600px; /* Limit container width for better readability */
-  margin: 0 auto; /* Center the container itself */
+  background: #ffffff;
+  color: #00335a;
+  text-align: center;
+  padding: 2rem;
 }
 
-h1 {
-  font-size: 2.8rem;
-  font-weight: 800;
-  color: #00335a;
-  margin-bottom: 3rem;
-  letter-spacing: -0.03em;
-  text-shadow: 1px 1px 2px rgba(0, 51, 90, 0.1);
+.title {
+  font-size: 3rem;
+  margin: 0;
+  letter-spacing: 0.1em;
+}
+
+.subtitle {
+  margin-top: 0.5rem;
+  font-size: 1.2rem;
 }
 
 .plate-form {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem; /* Increased gap */
-  margin-bottom: 3rem; /* Increased margin */
-  width: 100%;
-}
-
-.plate-outer {
-  display: flex;
-  align-items: center;
-  background: #fff;
-  border: 2px solid #ccc;
-  border-radius: 12px; /* Slightly less rounded */
-  box-shadow: 0 10px 40px rgba(0, 51, 90, 0.15);
-  padding: 0.6rem 1.8rem 0.6rem 0.6rem; /* Adjusted padding */
-  min-width: 300px; /* Minimum width */
-  max-width: 100%; /* Ensure it doesn't exceed container */
-  min-height: 75px; /* Minimum height */
-  margin: 0 auto; /* Explicitly center */
-  position: relative;
-  transition: all 0.3s ease-in-out;
-}
-
-.plate-outer:hover {
-  box-shadow: 0 12px 45px rgba(0, 51, 90, 0.2);
-}
-
-.plate-outer:focus-within {
-  border-color: #0056b3; /* Highlight on focus */
-  box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.3), 0 10px 40px rgba(0, 51, 90, 0.15);
-}
-
-.eu-strip {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  gap: 1rem;
   justify-content: center;
-  background: linear-gradient(180deg, #003399 0%, #002f6c 100%);
+  margin-top: 2rem;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+}
+
+.plate-wrapper {
+  display: flex;
+  border: 2px solid #000;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 300px;
+}
+
+.plate-wrapper.owned {
+  border-color: #c0392b;
+  box-shadow: 0 0 10px rgba(192, 57, 43, 0.7);
+}
+
+.plate-wrapper.not-owned {
+  border-color: #2ecc71;
+  box-shadow: 0 0 10px rgba(46, 204, 113, 0.7);
+}
+
+.se-tag {
+  background: #002f6c;
   color: #fff;
-  width: 45px; /* Wider EU strip */
-  height: 65px; /* Taller EU strip */
-  border-radius: 8px 0 0 8px; /* Match outer border-radius on left */
-  margin-right: 1.5rem; /* Increased spacing */
-  border-right: 2px solid #fff;
-  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
-  position: relative;
-}
-
-.eu-stars {
-  font-size: 1.2rem; /* Slightly larger stars */
-  margin-top: 6px; /* Adjusted margin */
-  margin-bottom: 4px; /* Adjusted margin */
-}
-
-.eu-country {
-  font-size: 1.3rem; /* Slightly larger country code */
   font-weight: bold;
-  letter-spacing: 0.1em;
-  margin-bottom: 4px; /* Adjusted margin */
+  padding: 0 0.5rem;
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
 }
 
 .plate-input {
   border: none;
-  font-size: 2.8rem; /* Larger font size */
-  font-weight: 700;
-  letter-spacing: 0.2em; /* Slightly reduced letter spacing */
+  font-size: 2.5rem;
+  font-weight: bold;
+  letter-spacing: 0.2rem;
   text-transform: uppercase;
-  width: 6ch; /* Keep 6ch width, but font size is larger */
-  background: transparent;
-  text-align: center;
-  color: #222;
-  font-family: "Space Mono", "Menlo", "Consolas", "Liberation Mono", monospace; /* Different monospaced font */
-  outline: none;
-  padding: 0.1rem 0.2rem; /* Adjusted padding */
+  padding: 0.2rem 0.5rem;
+  width: 6ch;
 }
 
-/* Placeholder style */
-.plate-input::placeholder {
-  color: #aaa; /* Lighter placeholder text */
-  opacity: 1; /* Ensure it's not transparent */
-  font-weight: 400; /* Lighter weight for placeholder */
+.plate-input:focus {
+  outline: none;
 }
 
 .result {
-  margin-top: 3rem; /* Increased margin */
-  font-size: 1.4rem; /* Slightly larger result font */
-  font-weight: 500;
-  color: #00335a;
-  background: #e9f0fa;
-  padding: 1.5rem 3rem; /* Increased padding */
-  border-radius: 10px;
-  display: inline-block;
-  box-shadow: 0 2px 10px rgba(0, 51, 90, 0.08);
-  font-family: inherit;
+  margin-top: 1.5rem;
+  font-size: 1.2rem;
+}
+
+.result-owned {
+  color: #c0392b;
+  font-weight: bold;
+}
+
+.result-not-owned {
+  color: #2ecc71;
+  font-weight: bold;
 }
 
 .loading {
-  color: #0056b3;
+  color: #00335a;
   font-weight: bold;
-  font-size: 1.2rem; /* Slightly larger loading text */
 }
 
-/* Responsive Adjustments */
-@media (max-width: 600px) {
-  .container {
-    padding: 1.5rem 0.5rem; /* Adjusted padding */
-  }
-  h1 {
+@media (max-width: 480px) {
+  .plate-input {
     font-size: 2rem;
-    margin-bottom: 2rem;
-  }
-  .plate-outer {
-    min-width: 85vw; /* Adjust min-width */
-    min-height: 65px; /* Adjusted min-height */
-    padding: 0.4rem 0.8rem 0.4rem 0.4rem; /* Adjusted padding */
-    border-radius: 10px;
-  }
-  .eu-strip {
-    width: 35px; /* Adjusted width */
-    height: 50px; /* Adjusted height */
-    border-radius: 6px 0 0 6px;
-    margin-right: 0.8rem;
-  }
-  .eu-stars {
-    font-size: 1rem;
-  }
-
-  .eu-country {
-    font-size: 1rem;
-  }
-  .plate-input {
-    font-size: 1.8rem; /* Adjusted font size */
-    width: 6ch; /* Keep 6ch */
-    padding: 0.1rem 0.1rem;
-  }
-  .result {
-    font-size: 1.1rem;
-    padding: 1rem 1.5rem;
-    border-radius: 8px;
-    margin-top: 2rem; /* Adjusted margin */
-  }
-}
-
-/* Even smaller screens */
-@media (max-width: 400px) {
-  h1 {
-    font-size: 1.8rem;
-    margin-bottom: 1.5rem;
-  }
-  .plate-outer {
-    min-width: 95vw; /* Adjust min-width */
-    min-height: 60px;
-    padding: 0.3rem 0.5rem 0.3rem 0.3rem; /* Adjusted padding */
-  }
-  .eu-strip {
-    width: 30px;
-    height: 45px;
-    margin-right: 0.6rem;
-  }
-  .eu-stars {
-    font-size: 0.9rem;
-  }
-
-  .eu-country {
-    font-size: 0.9rem;
-  }
-  .plate-input {
-    font-size: 1.5rem;
     width: 6ch;
   }
-  .result {
-    font-size: 1rem;
-    padding: 0.8rem 1.2rem;
+  .se-tag {
+    font-size: 1.2rem;
   }
 }
+
