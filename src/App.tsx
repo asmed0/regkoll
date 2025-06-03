@@ -1,34 +1,54 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [plate, setPlate] = useState('')
+  const [result, setResult] = useState<'owned' | 'not-owned' | null>(null)
+  const [loading, setLoading] = useState(false)
+
+  const checkPlate = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setLoading(true)
+    setResult(null)
+    try {
+      const res = await fetch(`/api/check?plate=${plate}`)
+      if (!res.ok) throw new Error('Request failed')
+      const data = await res.json()
+      setResult(data.owned ? 'owned' : 'not-owned')
+    } catch (err) {
+      console.error(err)
+      setResult('not-owned')
+    } finally {
+      setLoading(false)
+    }
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+    <div className="container">
+      <h1>RegKoll</h1>
+      <form onSubmit={checkPlate} className="plate-form">
+        <div className="plate-wrapper">
+          <span className="se-tag">S</span>
+          <input
+            className="plate-input"
+            value={plate}
+            onChange={(e) => setPlate(e.target.value.toUpperCase())}
+            maxLength={6}
+            placeholder="ABC123"
+          />
+        </div>
+        <button type="submit" disabled={loading}>
+          {loading ? 'Kontrollerar...' : 'Sök'}
         </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
+      </form>
+      {result && (
+        <p className="result">
+          {result === 'owned'
+            ? 'Fordonet ägs av Polismyndigheten.'
+            : 'Fordonet ägs inte av Polismyndigheten.'}
         </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+      )}
+    </div>
   )
 }
 
