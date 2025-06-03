@@ -53,6 +53,15 @@
 .result {
   margin-top: 1.5rem;
   font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.result.owned {
+  color: #d32f2f;
+}
+
+.result.not-owned {
+  color: #2e7d32;
 }
 
 .loading {
