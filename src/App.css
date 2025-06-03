@@ -43,7 +43,7 @@
   letter-spacing: 0.2rem;
   text-transform: uppercase;
   padding: 0.2rem 0.5rem;
-  width: 9rem;
+  width: 11.7rem; /* 30% wider */
 }
 
 .plate-input:focus {
