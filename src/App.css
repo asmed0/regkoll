@@ -57,8 +57,8 @@
   letter-spacing: 0.2rem;
   text-transform: uppercase;
   padding: 0.2rem 0.5rem;
-  /* Slightly wider to fit three letters and three numbers */
-  width: calc(6ch + 2rem);
+  /* 30% wider for improved spacing */
+  width: calc(7.8ch + 2.6rem);
 }
 
 .plate-input:focus {
