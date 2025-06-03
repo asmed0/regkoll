@@ -19,3 +19,13 @@ You can deploy your new Vite project with a single command from your terminal us
 ```shell
 $ vercel
 ```
+
+### API Endpoint
+
+A serverless function located in `api/check.js` checks whether a plate is owned by the police. Deploy this project to Vercel and query the endpoint:
+
+```bash
+curl https://<your-deployment>.vercel.app/api/check?plate=ABC123
+```
+
+The response is a JSON object indicating ownership.
