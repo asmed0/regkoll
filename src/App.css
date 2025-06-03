@@ -43,7 +43,7 @@
   letter-spacing: 0.2rem;
   text-transform: uppercase;
   padding: 0.2rem 0.5rem;
-  width: 9rem;
+  width: 11.7rem; /* 30% wider */
 }
 
 .plate-input:focus {
@@ -53,9 +53,30 @@
 .result {
   margin-top: 1.5rem;
   font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.result.owned {
+  color: #d32f2f;
+}
+
+.result.not-owned {
+  color: #2e7d32;
 }
 
 .loading {
   color: #00335a;
   font-weight: bold;
+}
+
+
+.title {
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.subtext {
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  color: #555;
 }
