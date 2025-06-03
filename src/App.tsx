@@ -1,34 +1,62 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [plate, setPlate] = useState('')
+  const [result, setResult] = useState<'owned' | 'not-owned' | null>(null)
+  const [loading, setLoading] = useState(false)
+
+  const checkPlate = async (value: string) => {
+    setLoading(true)
+    setResult(null)
+    try {
+      const res = await fetch(`/api/check?plate=${value}`)
+      if (!res.ok) throw new Error('Request failed')
+      const data = await res.json()
+      setResult(data.owned ? 'owned' : 'not-owned')
+    } catch (err) {
+      console.error(err)
+      setResult('not-owned')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.toUpperCase()
+    setPlate(value)
+    if (value.length === 6) {
+      checkPlate(value)
+    } else {
+      setResult(null)
+    }
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
+    <div className="container">
+      <h1 className="title">REGKOLL</h1>
+      <p className="subtitle">Se vem som äger fordon enkelt och smidigt</p>
+      <form className="plate-form" onSubmit={(e) => e.preventDefault()}>
+        <div className="plate-wrapper">
+          <span className="se-tag">S</span>
+          <input
+            className="plate-input"
+            value={plate}
+            onChange={handleChange}
+            maxLength={6}
+            placeholder="ABC123"
+          />
+        </div>
+        {loading && <span className="loading">Kontrollerar...</span>}
+      </form>
+      {result && (
+        <p className={`result ${result}`}>
+          {result === 'owned'
+            ? 'Fordonet ägs av Polismyndigheten.'
+            : 'Fordonet ägs inte av Polismyndigheten.'}
         </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+      )}
+    </div>
   )
 }
 
