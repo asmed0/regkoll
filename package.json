@@ -12,6 +12,7 @@
     "dev:all": "concurrently \"npm run dev\" \"npx vercel dev --yes\""
   },
   "dependencies": {
+    "@vercel/analytics": "^1.5.0",
     "express": "^4.19.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"

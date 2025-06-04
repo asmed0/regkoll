@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   const [plate, setPlate] = useState("");
@@ -33,34 +34,37 @@ function App() {
   };
 
   return (
-    <div className="page">
-      <div className="container">
-        <h1 className="title">REGKOLL</h1>
-        <p className="subtext">
-          Kolla upp registreringsnummer snabbt och smidigt
-        </p>
-        <form className="plate-form" onSubmit={(e) => e.preventDefault()}>
-          <div className="plate-wrapper">
-            <span className="se-tag">S</span>
-            <input
-              className="plate-input"
-              value={plate}
-              onChange={handleChange}
-              maxLength={6}
-              placeholder="ABC123"
-            />
-          </div>
-          {loading && <span className="loading">Kontrollerar...</span>}
-        </form>
-        {result && (
-          <p className={`result ${result}`}>
-            {result === "owned"
-              ? "Fordonet ägs av Polismyndigheten."
-              : "Fordonet ägs inte av Polismyndigheten."}
+    <>
+      <div className="page">
+        <div className="container">
+          <h1 className="title">REGKOLL</h1>
+          <p className="subtext">
+            Kolla upp registreringsnummer snabbt och smidigt
           </p>
-        )}
+          <form className="plate-form" onSubmit={(e) => e.preventDefault()}>
+            <div className="plate-wrapper">
+              <span className="se-tag">S</span>
+              <input
+                className="plate-input"
+                value={plate}
+                onChange={handleChange}
+                maxLength={6}
+                placeholder="ABC123"
+              />
+            </div>
+            {loading && <span className="loading">Kontrollerar...</span>}
+          </form>
+          {result && (
+            <p className={`result ${result}`}>
+              {result === "owned"
+                ? "Fordonet ägs av Polismyndigheten."
+                : "Fordonet ägs inte av Polismyndigheten."}
+            </p>
+          )}
+        </div>
       </div>
-    </div>
+      <Analytics />
+    </>
   );
 }
 
