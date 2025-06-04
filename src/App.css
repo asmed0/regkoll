@@ -79,11 +79,17 @@
   font-weight: bold;
   padding: 1rem;
   border-radius: 8px;
-  width: 100%;
-  max-width: 500px;
+  width: fit-content;
+  min-width: 220px;
+  max-width: 90vw;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12), 0 1.5px 6px rgba(0, 0, 0, 0.08);
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .result.owned {
@@ -213,5 +219,11 @@
   }
   .ad-bottom {
     min-height: 50px;
+  }
+  .result {
+    font-size: 1.1rem;
+    padding: 0.7rem;
+    min-width: 120px;
+    max-width: 98vw;
   }
 }
