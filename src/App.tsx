@@ -70,8 +70,8 @@ function App() {
               {result && (
                 <p className={`result ${result}`}>
                   {result === "owned"
-                    ? "Fordonet ägs av Polismyndigheten."
-                    : "Fordonet ägs inte av Polismyndigheten."}
+                    ? "Fordonet kan tillhöra Polisen!"
+                    : "Fordonet är troligen inte Polis!"}
                 </p>
               )}
               <div className="ad-bottom">
